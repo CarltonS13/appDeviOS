@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var NameLabel: UILabel!
     @IBOutlet weak var NameTextField: UITextField!
     
-    
     @IBOutlet weak var MajorLabel: UILabel!
     @IBOutlet weak var MajorTextField: UITextField!
     
@@ -30,7 +29,6 @@ class ViewController: UIViewController {
         MajorTextField.isHidden = false
         DisplayLabel.isHidden = true
         
-
         SubmitButton.setTitle("Declare", for: .normal)
         
         submitted.toggle()
@@ -41,7 +39,6 @@ class ViewController: UIViewController {
         MajorLabel.isHidden = true
         NameTextField.isHidden = true
         MajorTextField.isHidden = true
-        
         
         NameTextField.text = ""
         MajorTextField.text = ""
@@ -84,7 +81,17 @@ class ViewController: UIViewController {
             let major = UserDefaults.standard.string(forKey: "major")
             DisplayLabel.text = "Welcome to the " + major! + " department " + name! + "!";
         }
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if (Major.count == 0 ){
+            
+            Major.addMajor(name: "Chemistry", image: #imageLiteral(resourceName: "chemistry"), population: 30, department: "Science")
+            Major.addMajor(name: "Math", image: #imageLiteral(resourceName: "math"), population: 52, department: "Math")
+            Major.addMajor(name: "Art", image: #imageLiteral(resourceName: "art"), population: 34, department: "Art")
+            Major.addMajor(name: "Physics", image: #imageLiteral(resourceName: "physics"), population: 75, department: "Science")
+            Major.addMajor(name: "History", image: #imageLiteral(resourceName: "history"), population: 50, department: "Humanities")
+
+        }
+        
     }
 
 
