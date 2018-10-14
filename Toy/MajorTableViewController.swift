@@ -28,8 +28,8 @@ class MajorTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 5
+        // #warning partially Incomplete implementation, return the number of rows
+        return Major.count
     }
 
 

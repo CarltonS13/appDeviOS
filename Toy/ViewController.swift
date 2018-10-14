@@ -84,11 +84,13 @@ class ViewController: UIViewController {
         
         if (Major.count == 0 ){
             
-            Major.addMajor(name: "Chemistry", image: #imageLiteral(resourceName: "chemistry"), population: 30, department: "Science")
-            Major.addMajor(name: "Math", image: #imageLiteral(resourceName: "math"), population: 52, department: "Math")
-            Major.addMajor(name: "Art", image: #imageLiteral(resourceName: "art"), population: 34, department: "Art")
-            Major.addMajor(name: "Physics", image: #imageLiteral(resourceName: "physics"), population: 75, department: "Science")
-            Major.addMajor(name: "History", image: #imageLiteral(resourceName: "history"), population: 50, department: "Humanities")
+            Major.laodMajors{ (result) in
+                for dict in result {
+                let imageURL = URL(string: dict["Image"]!)
+                let image = UIImage(data: try! Data(contentsOf: imageURL!))
+                Major.addMajor(name: dict["Name"]!, image: image, population: Int(dict["Population"]!), department: dict["Department"]!)
+            }
+            }
 
         }
         

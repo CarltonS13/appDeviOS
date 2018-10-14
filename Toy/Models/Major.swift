@@ -23,4 +23,23 @@ class Major: NSObject {
         majors.append(MajorCellInfo(name: name, image: image, population: population, department: department))
         count += 1
     }
+    
+    class func laodMajors(completion: @escaping (Array<Dictionary<String,String>>) -> Void) -> Void {
+    let url = URL(string: "http://carltonsegbefia.com/apps/majors.json");
+    let session = URLSession(configuration: .default)
+    var request = URLRequest(url: url!)
+    request.httpMethod = "GET"
+    let task = session.dataTask(with: request) { (data, response, error) in
+        if(error != nil){
+            print("Failed to get majors from server")
+            return
+        }
+        print("Got majors")
+        let result = try? JSONSerialization.jsonObject(with: data!,options: [] ) as! Array<Dictionary<String,String>>
+        
+        completion(result!)
+        
+    }
+    task.resume()
+    }
 }
