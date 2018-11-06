@@ -213,7 +213,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2SM-2Z-c4Q">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="201"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="201.5"/>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
