@@ -2,7 +2,7 @@ import UIKit
 
 class AddMajorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var isPickerViewOpened : Bool = false 
+    var isPickerViewOpened : Bool = false
 
     @IBOutlet weak var TableView: UITableView!
     
@@ -42,9 +42,11 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
             return 2
         } else {
             if (isPickerViewOpened){
+                print("show")
                 return 2
             } else{
-                return 1
+                print("hide")
+                return 1//need to fix
             }
         }
     }
@@ -81,8 +83,10 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
                     cell.TextView.text = department
                 }
             } else {
-                cell.TextView.isHidden = true
-                cell.PickerView.isHidden = false
+                if(indexPath.row == 1){
+                    cell.TextView.isHidden = true
+                    cell.PickerView.isHidden = false
+                }
             }
         }
         
@@ -113,11 +117,17 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
             print("toggle")
             if (isPickerViewOpened){
                 isPickerViewOpened = false
+                
             }else{
                 isPickerViewOpened = true
             }
+//            let indexPathRow:Int = 1
+//            let indexPosition = IndexPath(row: indexPathRow, section: 1)
+//            tableView.reloadRows(at: [indexPosition], with: .none)
+//
             tableView.reloadSections(IndexSet.init(integer: 1), with: .automatic)
-//            tableView.reloadRows(at: [IndexPath (row: 1, section: 1)], with: .automatic)
+//            tableView.reloadRows(at: indexPath(row: 0, section: 1), with: .automatic)
+//            tableView.reloadRows(at:[IndexPath (row: 1, section: 1)], with: .automatic)
         }
     }
     
