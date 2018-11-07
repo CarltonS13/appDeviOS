@@ -1,12 +1,16 @@
-//
-//  ViewController.swift
-//  Toy
-//
-//  Created by Carlton Segbefia on 9/28/18.
-//  Copyright © 2018 Carlton Segbefia. All rights reserved.
-//
-
 import UIKit
+
+extension UIViewController{
+    func dismissKeyboardTaps() {
+         let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(false)
+    }
+   
+}
 
 class ViewController: UIViewController {
     
@@ -75,6 +79,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dismissKeyboardTaps()
         if(UserDefaults.standard.object(forKey: "name") != nil){
             hide()
             let name = UserDefaults.standard.string(forKey: "name")
