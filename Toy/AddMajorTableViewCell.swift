@@ -10,7 +10,6 @@ class AddMajorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
 
     @IBOutlet weak var TextView: UITextView!
     
-    
     @IBOutlet weak var PickerView: UIPickerView!
     
     func canSubmit() -> Bool {
@@ -27,7 +26,6 @@ class AddMajorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
@@ -69,7 +67,10 @@ class AddMajorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
         default:
             department = "General Department"
         }
+        
+//        pickerView.isHidden = true;
         addMajorViewController?.TableView.reloadRows(at: [IndexPath (row: 0, section: 1)], with: .automatic)
+        
         if (canSubmit()){
             addMajorViewController?.DoneButton.isEnabled = true
         }

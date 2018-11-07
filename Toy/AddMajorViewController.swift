@@ -110,12 +110,14 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 1 && indexPath.row == 0){
+            print("toggle")
             if (isPickerViewOpened){
                 isPickerViewOpened = false
             }else{
                 isPickerViewOpened = true
             }
             tableView.reloadSections(IndexSet.init(integer: 1), with: .automatic)
+//            tableView.reloadRows(at: [IndexPath (row: 1, section: 1)], with: .automatic)
         }
     }
     
