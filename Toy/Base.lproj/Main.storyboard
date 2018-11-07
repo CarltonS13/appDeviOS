@@ -244,7 +244,7 @@
                         <viewLayoutGuide key="safeArea" id="l0u-1I-uFy"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Major" id="YmR-Zg-mkh">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="LJJ-QT-3My">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="LJJ-QT-3My">
                             <connections>
                                 <action selector="ResetButtonTapped:" destination="djb-lL-lG7" id="4WD-r3-o7j"/>
                             </connections>

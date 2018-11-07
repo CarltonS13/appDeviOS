@@ -1,11 +1,3 @@
-//
-//  AddMajorViewController.swift
-//  Toy
-//
-//  Created by Carlton Segbefia on 11/6/18.
-//  Copyright © 2018 Carlton Segbefia. All rights reserved.
-//
-
 import UIKit
 
 class AddMajorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -17,9 +9,16 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var DoneButton: UIBarButtonItem!
     
     @IBAction func DoneButtonTapped(_ sender: Any) {
+        Major.addMajor(name: major, image: #imageLiteral(resourceName: "history"), population: population, department: department)
+        major = ""
+        population = 0
+        department = ""
         dismiss(animated: true, completion: nil)
     }
     @IBAction func ResetButtonTapped(_ sender: Any) {
+        major = ""
+        population = 0
+        department = ""
         dismiss(animated: true, completion: nil)
     }
     
@@ -28,6 +27,8 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
 
         TableView.delegate = self
         TableView.dataSource = self
+
+        DoneButton.isEnabled = false 
         // Do any additional setup after loading the view.
     }
     
@@ -51,6 +52,7 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let  cell = tableView.dequeueReusableCell(withIdentifier: "AddMajorCell", for: indexPath) as! AddMajorTableViewCell
         
+        cell.TextView.tag = indexPath.row
         cell.TextView.textContainer.maximumNumberOfLines = 1;
         cell.TextView.textContainer.lineBreakMode = .byTruncatingTail
         cell.PickerView.isHidden = true
@@ -72,11 +74,20 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.TextView.isUserInteractionEnabled = false
                 cell.TextView.text = "Department"
                 cell.TextView.isHidden = false
+                
+                if (department == ""){
+                    cell.TextView.text = "Department"
+                } else {
+                    cell.TextView.text = department
+                }
             } else {
                 cell.TextView.isHidden = true
                 cell.PickerView.isHidden = false
             }
         }
+        
+        cell.addMajorViewController = self
+        
         
         return cell
     }
@@ -107,6 +118,8 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
             tableView.reloadSections(IndexSet.init(integer: 1), with: .automatic)
         }
     }
+    
+    
     
     /*
     // MARK: - Navigation
