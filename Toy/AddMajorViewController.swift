@@ -3,6 +3,7 @@ import UIKit
 class AddMajorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var isPickerViewOpened : Bool = false
+    var selectedRow : Int = 0
 
     @IBOutlet weak var TableView: UITableView!
     
@@ -89,7 +90,7 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
                 }
             }
         }
-        
+        cell.PickerView.selectRow(selectedRow, inComponent: 0, animated: false)
         cell.addMajorViewController = self
         
         

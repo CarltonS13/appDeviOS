@@ -2,7 +2,7 @@ import UIKit
 
 var department : String = ""
 var major : String = ""
-var population : Int? = 0
+var population : Int? = -1
 
 class AddMajorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource, UITextViewDelegate {
     
@@ -13,7 +13,7 @@ class AddMajorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var PickerView: UIPickerView!
     
     func canSubmit() -> Bool {
-        return population != 0 && major != "" && department != ""
+        return population != -1 && major != "" && department != ""
     }
     
     override func awakeFromNib() {
@@ -69,6 +69,7 @@ class AddMajorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
         }
         
 //        pickerView.isHidden = true;
+        addMajorViewController?.selectedRow = row
         addMajorViewController?.TableView.reloadRows(at: [IndexPath (row: 0, section: 1)], with: .automatic)
         
         if (canSubmit()){
