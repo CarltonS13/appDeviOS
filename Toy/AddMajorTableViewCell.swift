@@ -13,7 +13,7 @@ class AddMajorTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var PickerView: UIPickerView!
     
     func canSubmit() -> Bool {
-        return population != -1 && major != "" && department != ""
+        return population != -1 && population !=  nil && major != "" && department != ""
     }
     
     override func awakeFromNib() {

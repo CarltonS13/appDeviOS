@@ -43,10 +43,8 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
             return 2
         } else {
             if (isPickerViewOpened){
-                print("show")
                 return 2
             } else{
-                print("hide")
                 return 1//need to fix
             }
         }
@@ -67,7 +65,7 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
             if (indexPath.row == 0){
                 cell.TextView.text = "Major"
             }else{
-                cell.TextView.text = "Population"
+                cell.TextView.text = "Population (in numbers)"
             }
         }else{
             if(indexPath.row == 0) {
@@ -115,7 +113,6 @@ class AddMajorViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section == 1 && indexPath.row == 0){
-            print("toggle")
             if (isPickerViewOpened){
                 isPickerViewOpened = false
                 
